@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.mappers.StudentMapper">
+    <!--返回类型为集合类时需单独定义-->
+    <resultMap id="studentList" type="Student">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+    </resultMap>
+
+    <!--add对应接口中的方法名；Student对应add方法的参数类型-->
+    <insert id="add" parameterType="Student"  >
+        insert into tb_student values(null,#{name},#{age})
+    </insert>
+    <update id="update" parameterType="Student">
+        update tb_student set name=#{name},age=#{age} where id=#{id}
+    </update>
+    <delete id="delete" parameterType="Integer">
+        DELETE from tb_student where id=#{id};
+    </delete>
+    <select id="findById" parameterType="Integer" resultType="Student">
+        select * from tb_student WHERE  id=#{id}
+    </select>
+
+    <select id="findAll" resultMap="studentList">
+        SELECT * from tb_student
+    </select>
+
+</mapper>
