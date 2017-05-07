@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.mappers.GradeMapper">
+
+    <resultMap id="GradeResult"   type="com.zt.model.Grade">
+        <id property="id" column="id"/>
+        <result property="gradeName" column="gradeName"/>
+        <!--一对多映射-->
+        <collection property="students" column="id" select="com.zt.mappers.StudentMapper.findByGradeId">
+
+        </collection>
+
+    </resultMap>
+
+    <select id="getById" parameterType="Integer" resultMap="GradeResult">
+        select * from tb_grade WHERE  id=#{id}
+    </select>
+
+
+
+</mapper>

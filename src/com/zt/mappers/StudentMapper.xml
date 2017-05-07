@@ -13,8 +13,15 @@
 
         <association property="address" column="addressId"
                      select="com.zt.mappers.AddressMapper.getById"/>
+
+        <association property="grade" column="gradeId"
+                     select="com.zt.mappers.GradeMapper.getById"/>
     </resultMap>
 
+
+    <select id="findByGradeId" resultMap="StudentResult" parameterType="Integer">
+        select * from tb_student where gradeId=#{gradeId}
+    </select>
 
 
 

@@ -57,6 +57,18 @@ public class StudentTest3 {
          }
     }
 
+
+    @Test
+    public void testFindStudentWithGrade(){
+        log.info("按照id查找学生！(包括年级)");
+        Student s;
+        s= studentMapper.findStudentWithAddress(1);
+        if(s!=null){
+            log.info(s);
+        }else{
+            log.info("s为空");
+        }
+    }
     @After
     public void afterTest(){
        sqlSession.close();
