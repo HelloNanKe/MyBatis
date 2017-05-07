@@ -18,4 +18,6 @@ public interface StudentMapper {
     public Student findById(Integer id);
     //查询全部学生
     public List<Student> findAll();
+
+    public Student findStudentWithAddress(Integer id);
 }

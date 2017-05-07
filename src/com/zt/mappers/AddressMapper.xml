@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zt.mappers.AddressMapper">
+
+    <resultMap id="AddressResult"   type="com.zt.model.Address">
+        <id property="id" column="id"/>
+        <result property="sheng" column="sheng"/>
+        <result property="shi" column="shi"/>
+        <result property="qu" column="qu"/>
+
+    </resultMap>
+
+    <select id="getById" parameterType="Integer" resultType="Address">
+        select * from tb_address WHERE  id=#{id}
+    </select>
+
+
+
+</mapper>

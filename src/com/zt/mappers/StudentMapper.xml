@@ -4,11 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zt.mappers.StudentMapper">
     <!--返回类型为集合类时需单独定义-->
-    <resultMap id="studentList" type="Student">
+
+
+    <resultMap id="StudentResult" type="com.zt.model.Student" >
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="age" column="age"/>
+
+        <association property="address" column="addressId"
+                     select="com.zt.mappers.AddressMapper.getById"/>
     </resultMap>
+
+
+
+
+    <select id="findStudentWithAddress" parameterType="Integer" resultMap="StudentResult">
+        select * from tb_student t1,tb_address t2 where t1.addressId=t2.id and t1.id=#{id}
+    </select>
 
     <!--add对应接口中的方法名；Student对应add方法的参数类型-->
     <insert id="add" parameterType="Student"  >
@@ -24,7 +36,7 @@
         select * from tb_student WHERE  id=#{id}
     </select>
 
-    <select id="findAll" resultMap="studentList">
+    <select id="findAll" resultMap="StudentResult">
         SELECT * from tb_student
     </select>
 

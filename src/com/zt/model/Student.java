@@ -4,9 +4,19 @@ package com.zt.model;
  * Created by apple on 2017/5/3.
  */
 public class Student {
-    private int id;
+    private Integer id;
     private String name;
-    private int age;
+    private Integer age;
+
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public Student() {
     }
@@ -16,6 +26,8 @@ public class Student {
         this.name = name;
         this.age = age;
     }
+
+
 
     public String getName() {
         return name;
@@ -41,5 +53,11 @@ public class Student {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Student [id=" + id + ", name=" + name + ", age=" + age + ", address=" + address + "]";
     }
 }
